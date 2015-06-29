@@ -1,4 +1,4 @@
-# Wordress template sample theme
+# Wordress template theme
 
-A sample theme of wordpress-template project.
-It is a child theme of Timber starter theme, featuring Twitter bootstrap styled HTML5 boilerplate stucture
+A sample theme of wordpress-template project. 
+It is a theme created out of Timber starter theme, featuring Twitter bootstrap styled HTML5 boilerplate stucture

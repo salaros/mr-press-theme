@@ -1,33 +1,27 @@
 {
-    "name": "upstatement/timber-starter-theme",
-    "description": "Starter theme to build a Timber theme",
-    "type":"wordpress-theme",
-    "minimum-stability" : "dev",
-    "authors": [
-        {
-            "name": "jarednova",
-            "email": "jared@upstatement.com"
+    "name": "salaros/wordpress-template-sample-theme",
+    "description": "A sample theme of wordpress-template project.",
+    "type": "wordpress-theme",
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "authors": [{
+        "name": "Upstatement team",
+        "homepage": "http://upstatement.com",
+        "role": "Author"
+    }, {
+        "name": "Zhmayev Yaroslav",
+        "email": "salaros@salaros.com",
+        "homepage": "https://github.com/salaros",
+        "role": "Developer"
+    }],
+    "require": {
+        "bower-asset/bootstrap": "*",
+        "bower-asset/respond": "*",
+        "bower-asset/html5shiv": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Salaros\\Wordpress\\Template\\": "classes/"
         }
-    ],
-	"require-dev": {
-		"jarednova/timber": "dev-master"
-	},
-	"repositories": [
-		{
-			"type" : "package",
-			"package" : {
-				"name" : "jarednova/php-router",
-				"version" : "1.0.1",
-				"dist" : {
-					"url" : "https://github.com/jarednova/PHP-Router/archive/fix_psr_0.zip",
-					"type" : "zip"
-				},
-				"autoload": {
-					"psr-0": {
-						"PHPRouter": "src/"
-					}
-				}
-			}
-		}
-	]
+    }
 }
