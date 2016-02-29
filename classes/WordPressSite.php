@@ -4,6 +4,7 @@ namespace Salaros\Wordpress\Template;
 
 use Salaros\Wordpress\Template\NavMenuTools;
 use Salaros\Wordpress\Template\TwigExtensions;
+use Salaros\Wordpress\Template\AdvancedCustomFields;
 
 class WordPressSite extends \TimberSite {
 
@@ -96,6 +97,10 @@ class WordPressSite extends \TimberSite {
             NavMenuTools::create_menu( 'top-nav-menu', $menu_items );
         }
         /**/
+    }
+
+    public function init_custom_fields() {
+        AdvancedCustomFields::init();
     }
 
     public function register_post_types() {
