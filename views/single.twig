@@ -7,22 +7,35 @@
                 <h1 class="article-h1">{{post.title}}</h1>
                 <p class="blog-author">
                     <span>{{ 'By'|translate }}</span>
-                    <a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.post_date|date}}
+                    <a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span>
+					<!-- Date/Time -->
+					<small class="text-muted" style="cursor: pointer" title="{{ post.post_date|date('d/m/Y') }}">
+						<i class="glyphicon glyphicon-time"></i> {{ 'Posted on'|translate }} {{ post.post_date|date}}
+					</small>
                 </p>
                 <div class="article-body">
                     {{post.content}}
                 </div>
             </section>
+			<hr/>
             <section class="comments">
-                <div class="respond">
-                    <h3 class="h2">{{ 'Comments'|translate }}</h3>
-                    {{ comment_form }}
-                </div>
-                <div class="responses">
+				<h3 class="h2">{{ 'Comments'|translate }}
+					<span class="badge">{{ post.comment_count }}</span>
+				</h3>
+				<div class="clearfix">&nbsp;</div>
+                <div class="row responses">
+					<div class="col-xs-12">
                     {% for cmt in post.get_comments() %}
                         {% include "comment.twig" with {comment:cmt} %}
                     {% endfor %}
+					</div>
                 </div>
+				<hr/>
+				<div class="row respond">
+					<div class="col-xs-12">
+					{{ comment_form }}
+					</div>
+				</div>
             </section>
         </article>
     </div><!-- /content-wrapper -->

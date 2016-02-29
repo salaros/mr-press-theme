@@ -2,6 +2,8 @@
 
 namespace Salaros\Wordpress\Template;
 
+use Salaros\Wordpress\Template\TwigExtensions;
+
 class NavMenuTools {
 
     public static function menu_exists( $menu_name ) {
@@ -39,7 +41,7 @@ class NavMenuTools {
     public static function create_menu_item_obj( $menu_item, $parent_item_id = -1 ) {
 
         if ( array_key_exists( 'slug', $menu_item ) ) {
-            $page = get_page_by_slug($menu_item['slug']);
+            $page = TwigExtensions::get_page_by_slug($menu_item['slug']);
             $menu_item['id'] = $page->ID;
             $menu_item['title'] = translate( $page->title );
         }

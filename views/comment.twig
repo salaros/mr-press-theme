@@ -1,4 +1,39 @@
-<div class="blog-comment {{comment.comment_type}}" id="blog-comment-{{comment.ID}}">
-    <h5 class="comment-author">{{comment.author.name}} {{ 'says'|translate }} }}</h5>
-    <div class="comment-content">{{comment.comment_content|wpautop}}</div>
+{% set date_today_raw = "now"|date("Y-m-d H:i:s") %}
+{% set date_today = function('date_create', date_today_raw) %}
+<div class="media blog-comment {{comment.comment_type}} comment-order-{{loop.index}}" id="blog-comment-{{comment.ID}}">
+	<a class="pull-left" href="#">
+		{% set author_url = function('get_avatar_url', comment.author.id ) %}
+		<img class="media-object img-thumbnail img-responsive" width="64" alt="{{comment.author.name}}" src="{{ author_url }}" />
+	</a>
+	<div class="media-body">
+		<h4 class="media-heading comment-author">{{comment.author.name}}
+			<small class="text-muted" style="cursor: pointer" title="{{ comment.comment_date|date('d/m/Y') }}">
+				{% set comment_date = function('date_create', comment.comment_date) %}
+				{% set date_days_diff_obj = function('date_diff', comment_date, date_today) %}
+				{% set date_days_diff = date_days_diff_obj.format('%d') %}
+				{% set date_days_diff_str = (date_days_diff == '0')
+				? 'Today'
+				: date_days_diff ~ ' day(s) ago' %}
+				<i class="glyphicon glyphicon-time"></i> {{ date_days_diff_str }}
+			</small><br />
+		</h4>
+
+		<p class="text">
+			{{comment.comment_content|wpautop}}
+		</p>
+
+		{% if comment.children %}
+			{% for comment in comment.children %}
+			<!-- Nested Comment -->
+			{% include 'comment.twig' %}
+			{% if comment.children|length > loop.index %}
+			<!-- THEME SEPARATOR -->
+			{% endif %}
+			<!-- End Nested Comment -->
+			{% endfor %}
+		{% endif %}
+
+    </div>
 </div>
+
+

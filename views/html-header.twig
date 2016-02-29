@@ -14,8 +14,12 @@
                 {{ site.name }}
             {% endif %}
         </title>
-    <meta name="description" content="{{site.description}}">
     <link rel="stylesheet" href="{{site.theme.link}}/style.css" type="text/css" media="screen" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="pingback" href="{{site.pingback_url}}" />
+
+<!-- SEO stuff -->
+	    <meta name="description" content="{{site.description}}">
+<!-- SEO stuff -->
+
     {{function('wp_head')}}

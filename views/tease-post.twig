@@ -1,9 +1,17 @@
 {% extends "tease.twig" %}
 
 {% block content %}
-	<h2 class="h2"><a href="{{post.link}}">{{post.title}}</a></h2>
-		<p>{{post.get_preview(25)}}</p>
-		{% if post.thumbnail.src %}
-			<img src="{{post.thumbnail.src}}" />
-		{% endif %}
+<article class="row">
+    <h3 class="h3 col-xs-12">
+        <a href="{{post.link}}">{{post.title}}</a>
+    </h3>
+    {% if post.thumbnail.src %}
+    <div class="col-xs-12">
+        <img src=" {{post.thumbnail.src|resize(150,150) }}" />
+    </div>
+    {% endif %}
+    <div class="col-xs-12 pull-left">
+        <p>{{post.get_preview(128)}}..</p>
+    </div>
+</article>
 {% endblock %}

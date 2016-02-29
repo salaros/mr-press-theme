@@ -1,5 +1,12 @@
-{% extends "base.twig" %}
+{% extends "page-no-social.twig" %}
+
+{% block title %}
+<h2 class="header text-left col-xs-12">
+    {{ 'Page not found'|translate }}
+    <hr />
+</h2>
+{% endblock %}
 
 {% block content %}
-    {{ 'Sorry, we couldn't find what you're looking for.'|translate }}
+    {{ "Sorry, we couldn't find what you're looking for."|translate }}
 {% endblock %}
