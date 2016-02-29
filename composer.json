@@ -15,6 +15,7 @@
         "role": "Developer"
     }],
     "require": {
+        "bower-asset/normalize.css": "*",
         "bower-asset/bootstrap": "*",
         "bower-asset/respond": "*",
         "bower-asset/html5shiv": "*"

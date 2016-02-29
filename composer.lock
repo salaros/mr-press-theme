@@ -4,7 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8e410b2d6af5261a2f91bc75dc26fd40",
+    "hash": "8b2978a1ee41696fb7d498b8200db707",
+    "content-hash": "39d9a2aaad4388fc0d29a4880e66c9f4",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -56,17 +57,54 @@
             ]
         },
         {
-            "name": "bower-asset/html5shiv",
-            "version": "3.7.2",
+            "name": "bower-asset/components-font-awesome",
+            "version": "4.4.0",
             "source": {
                 "type": "git",
-                "url": "https://github.com/aFarkas/html5shiv.git",
-                "reference": "40df868a76f1f19ea23b123d1480d44a7195f349"
+                "url": "https://github.com/components/font-awesome.git",
+                "reference": "7dffacc72e566e5db6272244effc06f64fe9f185"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aFarkas/html5shiv/zipball/40df868a76f1f19ea23b123d1480d44a7195f349",
-                "reference": "40df868a76f1f19ea23b123d1480d44a7195f349",
+                "url": "https://api.github.com/repos/components/font-awesome/zipball/7dffacc72e566e5db6272244effc06f64fe9f185",
+                "reference": "7dffacc72e566e5db6272244effc06f64fe9f185",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": [
+                    "css/font-awesome.css",
+                    "scss/font-awesome.scss",
+                    "fonts/fontawesome-webfont.eot",
+                    "fonts/fontawesome-webfont.woff",
+                    "fonts/fontawesome-webfont.woff2",
+                    "fonts/fontawesome-webfont.ttf",
+                    "fonts/fontawesome-webfont.svg"
+                ],
+                "bower-asset-ignore": [
+                    "Makefile",
+                    "component.json",
+                    "composer.json"
+                ]
+            },
+            "license": [
+                "MIT",
+                "OFL-1.1"
+            ],
+            "description": "Font Awesome, the iconic font designed for use with Twitter Bootstrap."
+        },
+        {
+            "name": "bower-asset/html5shiv",
+            "version": "3.7.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aFarkas/html5shiv.git",
+                "reference": "ed28c56c071bddfe7d635ad88995674957a016be"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aFarkas/html5shiv/zipball/ed28c56c071bddfe7d635ad88995674957a016be",
+                "reference": "ed28c56c071bddfe7d635ad88995674957a016be",
                 "shasum": ""
             },
             "type": "bower-asset-library",
@@ -127,6 +165,32 @@
                 "jquery",
                 "library"
             ]
+        },
+        {
+            "name": "bower-asset/normalize.css",
+            "version": "3.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/necolas/normalize.css.git",
+                "reference": "2bdda84272650aedfb45d8abe11a6d177933a803"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/necolas/normalize.css/zipball/2bdda84272650aedfb45d8abe11a6d177933a803",
+                "reference": "2bdda84272650aedfb45d8abe11a6d177933a803",
+                "shasum": ""
+            },
+            "type": "bower-asset-library",
+            "extra": {
+                "bower-asset-main": "normalize.css",
+                "bower-asset-ignore": [
+                    "CHANGELOG.md",
+                    "CONTRIBUTING.md",
+                    "component.json",
+                    "package.json",
+                    "test.html"
+                ]
+            }
         },
         {
             "name": "bower-asset/respond",
