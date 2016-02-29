@@ -15,11 +15,12 @@
         "role": "Developer"
     }],
     "require": {
-        "bower-asset/normalize.css": "*",
-        "bower-asset/bootstrap": "*",
-        "bower-asset/respond": "*",
-        "bower-asset/html5shiv": "*"
+        "bower-asset/normalize.css": "~3.0.0",
+		"bower-asset/bootstrap": "~3.3.0",
+        "bower-asset/respond": "~1.4.0",
+		"bower-asset/html5shiv": "~3.7.0"
     },
+	"target-dir": "vendor",
     "autoload": {
         "psr-4": {
             "Salaros\\Wordpress\\Template\\": "classes/"
