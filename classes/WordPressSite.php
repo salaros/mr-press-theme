@@ -25,7 +25,7 @@ class WordPressSite extends \TimberSite {
         self::$THEME_NAME = wp_get_theme()->template;
         self::$THEME_PATH = get_stylesheet_directory();
         self::$THEME_URL = get_stylesheet_directory_uri();
-        self::$BOWER_URL = self::$THEME_URL.'/vendor/bower-asset';
+        self::$BOWER_URL = WP_CONTENT_URL . '/bower-asset';
         self::$LANGS_PATH = self::$THEME_PATH.'/languages';
         self::$STATIC_URL = self::$THEME_URL.'/static';
         self::$USER_CURRENT = (is_user_logged_in())

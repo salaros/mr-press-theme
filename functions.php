@@ -9,8 +9,6 @@ if ( ! class_exists( 'Timber' ) ) {
     return;
 }
 
-require_once("vendor/autoload.php");
-
 use Salaros\Wordpress\Template\WordPressSite;
 
 WordPressSite::initialize();
