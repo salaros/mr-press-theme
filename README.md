@@ -11,6 +11,10 @@ TODO: Write about theme features
 
 Currently this theme works only with [Mr. Press](https://github.com/salaros/mr-press), but soon it will be adapted to work on any [WordPress](https://wordpress.org/) installation (using [Composer](https://getcomposer.org/) and [WordPress Packagist](https://wpackagist.org/))
 
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+
 ## Credits
 
 TODO: Write credits
