@@ -1,5 +1,5 @@
 {
-    "name": "salaros/wordpress-template-theme",
+    "name": "salaros/mr-press-theme",
     "description": "A sample theme of wordpress-template project.",
     "type": "wordpress-theme",
     "minimum-stability": "stable",
