@@ -1,4 +1,16 @@
-# Wordress template theme
+# Mr. Press default theme
 
-A sample theme of wordpress-template project.
-It is a theme created out of Timber starter theme, featuring Twitter bootstrap styled HTML5 boilerplate stucture
+Is part of **[Mr. Press](https://github.com/salaros/mr-press)** project.
+It is a responsive HTML5 theme created out of [Timber Starter Theme](https://github.com/timber/starter-theme) which was adapted to use [Twitter Bootstrap](http://getbootstrap.com/) framework.
+
+## Features
+
+TODO: Write about theme features
+
+## Installation
+
+Currently this theme works only with [Mr. Press](https://github.com/salaros/mr-press), but soon it will be adapted to work on any [WordPress](https://wordpress.org/) installation (using [Composer](https://getcomposer.org/) and [WordPress Packagist](https://wpackagist.org/))
+
+## Credits
+
+TODO: Write credits
