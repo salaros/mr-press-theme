@@ -1,39 +1,42 @@
 {
-    "name": "salaros/mr-press-theme",
-    "description": "A sample theme of wordpress-template project.",
-    "type": "wordpress-theme",
-	"license": "MIT",
-    "authors": [{
-        "name": "Upstatement team",
-        "homepage": "http://upstatement.com",
-        "role": "Author"
-    }, {
-        "name": "Zhmayev Yaroslav",
-        "email": "salaros@salaros.com",
-        "homepage": "https://github.com/salaros",
-        "role": "Developer"
-    }],
+    "name"                  : "salaros/mr-press-theme",
+    "description"           : "A sample theme of wordpress-template project.",
+    "type"                  : "wordpress-theme",
+    "license"               : "MIT",
+    "authors"               : [
+        {
+            "name"          : "Upstatement team",
+            "homepage"      : "http://upstatement.com",
+            "role"          : "Author"
+        },
+        {
+            "name"          : "Zhmayev Yaroslav",
+            "email"         : "salaros@salaros.com",
+            "homepage"      : "https://github.com/salaros",
+            "role"          : "Developer"
+        }
+    ],
     "require": {
-		"fxp/composer-asset-plugin": "*",
-        "bower-asset/normalize.css": "~3.0.0",
-		"bower-asset/bootstrap": "~3.3.0",
-        "bower-asset/respond": "~1.4.0",
-		"bower-asset/html5shiv": "~3.7.0"
+        "fxp/composer-asset-plugin"         : "*",
+        "bower-asset/normalize.css"         : "~3.0.0",
+        "bower-asset/bootstrap"             : "~3.3.0",
+        "bower-asset/respond"               : "~1.4.0",
+        "bower-asset/html5shiv"             : "~3.7.0"
     },
-	"config": {
-		"vendor-dir": "../../../vendor"
-	},
-	"extra": {
-		"asset-installer-paths": {
-			"npm-asset-library": "../../npm-asset",
-			"bower-asset-library": "../../bower-asset"
-		}
-	},
+    "config": {
+        "vendor-dir"                        : "../../../vendor"
+    },
+    "extra": {
+        "asset-installer-paths": {
+            "npm-asset-library"             : "../../npm-asset",
+            "bower-asset-library"           : "../../bower-asset"
+        }
+    },
     "autoload": {
         "psr-4": {
             "Salaros\\Wordpress\\Template\\": "classes/"
         }
     },
-	"minimum-stability": "stable",
-	"prefer-stable": true
+    "minimum-stability"                     : "stable",
+    "prefer-stable"                         : true
 }
