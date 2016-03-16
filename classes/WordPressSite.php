@@ -230,8 +230,8 @@ class WordPressSite extends \TimberSite {
     public function enqueue_scripts() {
         //this is where you can add your javascript entries
         self::enqueue_script( 'respond', self::$BOWER_URL.'/respond/dest/respond.min.js', [], '1.4.2', false, ['conditional' => 'lt IE 9'] );
-        self::enqueue_script( 'html5shiv', self::$BOWER_URL.'/html5shiv/dist/html5shiv.min.js', [], '3.7.2', false, ['conditional' => 'lt IE 9'] );
-        self::enqueue_script( 'bootstrap', self::$BOWER_URL.'/bootstrap/dist/js/bootstrap.min.js', ['jquery'], '3.3.5', true );
+        self::enqueue_script( 'html5shiv', self::$BOWER_URL.'/html5shiv/dist/html5shiv.min.js', [], '3.7.3', false, ['conditional' => 'lt IE 9'] );
+        self::enqueue_script( 'bootstrap', self::$BOWER_URL.'/bootstrap/dist/js/bootstrap.min.js', ['jquery'], '3.3.6', true );
 		self::enqueue_script( 'site', self::$THEME_URL.'/static/js/site.js', ['bootstrap'], '0.1.0', true );
     }
 
