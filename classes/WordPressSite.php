@@ -266,14 +266,14 @@ class WordPressSite extends \TimberSite {
             $fields   =  array(
                 'author' =>
                     '<div class="form-group comment-form-author form-control-wrapper">' .
-				'<label for="usr">' . __('Name') . ' *</label>' .
+                '<label for="author" class="control-label">' . __('Name') . ' *</label>' .
                 '<input class="form-control" id="author" name="author" type="text" autocomplete="off" value="' . $author_name . '" size="30"' . $aria_req . ' />' .
                     '</div>',
 
                 'email'  =>
 
                     '<div class="form-group comment-form-email form-control-wrapper">' .
-				'<label for="usr">' . __('Email') . ' *</label>' .
+                '<label for="email" class="control-label">' . __('Email') . ' *</label>' .
                 '<input class="form-control" id="email" name="email" type="email" autocomplete="off" value="' . $author_email . '" size="30"' . $aria_req . ' />' .
                     '</div>',
             );
