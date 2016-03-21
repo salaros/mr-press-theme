@@ -1,7 +1,8 @@
 # Mr. Press default theme
 
-Is part of **[Mr. Press](https://github.com/salaros/mr-press)** project.
+Makes part of **[Mr. Press](https://github.com/salaros/mr-press)** project.
 It is a responsive HTML5 theme created out of [Timber Starter Theme](https://github.com/timber/starter-theme) which was adapted to use [Twitter Bootstrap](http://getbootstrap.com/) framework.
+You should not change its code, please use **[Mr. Press Theme Child](https://github.com/salaros/mr-press-child-theme)**. instead
 
 ## Features
 
