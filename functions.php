@@ -18,7 +18,3 @@ if ( ! class_exists( 'Timber' ) ) {
 
     return;
 }
-
-use Salaros\Wordpress\Template\WordPressSite;
-
-WordPressSite::initialize();
