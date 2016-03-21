@@ -1,8 +1,16 @@
-/* #  Mr.Press default theme
-* Theme Name: Mr.Press default theme
-* Template Version: 0.2.1
-* Author: Upstatement team
-* Author: Zhmayev Yaroslav <salaros@salaros.com>
+/*
+Theme Name:         Mr.Press default theme
+Theme URI:          https://github.com/salaros/mr-press-theme
+Description:        Mr.Press default theme
+Author:             Upstatement team
+Author URI:         https://github.com/Upstatement
+Author:             Zhmayev Yaroslav <salaros@salaros.com>
+Author URI:         https://github.com/salaros
+License:            MIT
+License URI:        https://opensource.org/licenses/MIT
+Tags:               bootstrap, twig, timber, mr-press, responsive-layout, accessibility-ready
+Text Domain:        mr-press-theme
+Version:            0.3.0
 */
 
 html, body {
