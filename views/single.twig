@@ -1,42 +1,21 @@
 {% extends "base.twig" %}
 
 {% block content %}
-    <div class="content-wrapper">
-        <article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-            <section class="article-content">
-                <h1 class="article-h1">{{post.title}}</h1>
-                <p class="blog-author">
-                    <span>{{ 'By'|translate }}</span>
-                    <a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span>
-					<!-- Date/Time -->
-					<small class="text-muted" style="cursor: pointer" title="{{ post.post_date|date('d/m/Y') }}">
-						<i class="glyphicon glyphicon-time"></i> {{ 'Posted on'|translate }} {{ post.post_date|date}}
-					</small>
-                </p>
-                <div class="article-body">
-                    {{post.content}}
-                </div>
-            </section>
-			<hr/>
-            <section class="comments">
-				<h3 class="h2">{{ 'Comments'|translate }}
-					<span class="badge">{{ post.comment_count }}</span>
-				</h3>
-				<div class="clearfix">&nbsp;</div>
-                <div class="row responses">
-					<div class="col-xs-12">
-                    {% for cmt in post.get_comments() %}
-                        {% include "comment.twig" with {comment:cmt} %}
-                    {% endfor %}
-					</div>
-                </div>
-				<hr/>
-				<div class="row respond">
-					<div class="col-xs-12">
-					{{ comment_form }}
-					</div>
-				</div>
-            </section>
-        </article>
-    </div><!-- /content-wrapper -->
+<article class="post-type-{{post.post_type}} col-xs-12" id="post-{{post.ID}}" data-template="single.twig">
+    <section class="article-content">
+        <h2 class="article-h2">{{post.title}}</h2>
+        {% include 'single-meta.twig' %}
+        <hr>
+        <div class="article-body">
+            {% if post.thumbnail and post.thumbnail.src %}
+            <img src="{{post.thumbnail.src}}" class="post-thumb img-responsive" alt="{{ post.title }}">
+            <hr>
+            {% endif %}
+            <p>
+                {{post.content}}
+            </p>
+        </div>
+    </section>
+    {% include 'comments.twig' %}
+</article>
 {% endblock %}
