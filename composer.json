@@ -1,6 +1,6 @@
 {
     "name"                  : "salaros/mr-press-theme",
-    "description"           : "A sample theme of wordpress-template project.",
+    "description"           : "Makes part of Mr. Press project. You should not change its code, please use 'mr-press-theme-child' instead",
     "type"                  : "wordpress-theme",
     "license"               : "MIT",
     "authors"               : [
@@ -16,22 +16,6 @@
             "role"          : "Developer"
         }
     ],
-    "require": {
-        "fxp/composer-asset-plugin"         : "*",
-        "bower-asset/normalize.css"         : "~3.0.0",
-        "bower-asset/bootstrap"             : "~3.3.0",
-        "bower-asset/respond"               : "~1.4.0",
-        "bower-asset/html5shiv"             : "~3.7.0"
-    },
-    "config": {
-        "vendor-dir"                        : "../../../vendor"
-    },
-    "extra": {
-        "asset-installer-paths": {
-            "npm-asset-library"             : "../../npm-asset",
-            "bower-asset-library"           : "../../bower-asset"
-        }
-    },
     "autoload": {
         "psr-4": {
             "Salaros\\Wordpress\\Template\\": "classes/"
