@@ -14,6 +14,10 @@ $post = Timber::query_post();
 $context['post'] = $post;
 $context['comment_form'] = TimberHelper::get_comment_form();
 
+if ( get_option('thread_comments') === "1" ) {
+    $site->add_script( 'comment-reply' );
+}
+
 if ( post_password_required( $post->ID ) ) {
     Timber::render( 'single-password.twig', $context );
 } else {
