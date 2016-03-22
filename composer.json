@@ -16,11 +16,28 @@
             "role"          : "Developer"
         }
     ],
+    "repositories"          : [
+        {
+            "type"          : "composer",
+            "url"           : "http://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wpackagist-plugin/timber-library"          : "*",
+        "wpackagist-plugin/advanced-custom-fields"  : "*"
+    },
+    "extra": {
+        "installer-paths": {
+            "../../plugins/{$name}/"    : [
+                "type:wordpress-plugin"
+            ]
+        }
+    },
     "autoload": {
         "psr-4": {
             "Salaros\\Wordpress\\Template\\": "classes/"
         }
     },
-    "minimum-stability"                     : "stable",
-    "prefer-stable"                         : true
+    "minimum-stability"                 : "stable",
+    "prefer-stable"                     : true
 }
