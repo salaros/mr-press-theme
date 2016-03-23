@@ -4,6 +4,12 @@ namespace Salaros\Wordpress\Template;
 
 class TwigExtensions extends \Twig_Extension
 {
+    private static $default_text_domain;
+
+    public static function set_default_text_domain($domain) {
+        self::$default_text_domain = $domain;
+    }
+
     public function getName()
     {
         return 'wordpress';
@@ -33,7 +39,7 @@ class TwigExtensions extends \Twig_Extension
     public static function get_translation($label, $domain = null) {
 
         if(empty($domain))
-            $domain = 'wordpress-template-theme';
+            $domain = self::$default_text_domain;
 
         $translation = __($label, $domain);
         return ($translation !== $label)
