@@ -136,11 +136,25 @@ class WordPressSite extends TimberSite
         // https://blog.codecentric.de/en/2011/10/wordpress-and-mod_pagespeed-why-combine_css-does-not-work
         add_filter( 'style_loader_tag', array( $this, 'process_style_tags' ) ); // TODO make it a theme option
 
+        // Remove admin bar for non-admin users
+        add_action('init', array( $this, 'hide_admin_bar_for_users' ) ); // TODO make it a theme option
+
         // Customize Timer/Twig views location
         Timber::$dirname = $this->twig_locations;
     }
 
-    // Remove CSS <link id="xxx" attrib for pagespeed compatibility
+    /**
+     * Remove admin bar for non-admin users
+     *
+     * @return  void
+     *
+     */
+    public function hide_admin_bar_for_users() {
+        if(current_user_can('administrator'))
+            return;
+        add_filter( 'show_admin_bar', '__return_false' );
+    }
+
     public function process_style_tags($link) {
         return preg_replace("/id='.*-css'/", "", $link);
     }
