@@ -11,10 +11,10 @@
         </a>
     </div>
 
-    {% set comment_date = function('date_create', comment.comment_date) %}
+    {% set comment_date_obj = function('date_create', comment.comment_date) %}
     {% set comment_date_universal = comment.comment_date|date('Y-m-d H:i:s') %}
-    {% set date_days_diff_obj = function('date_diff', comment_date, date_today) %}
-    {% set date_days_diff_str = (date_days_diff_obj.format('%d') == '0')
+    {% set date_days_diff_obj = function('date_diff', comment_date_obj, date_today) %}
+    {% set date_days_diff_str = (date_days_diff_obj.format('%d') == '0' and comment_date_obj.format('d') == date_today.format('d'))
     ? comment.comment_date|date(site.time_format)
     : comment.comment_date|date(site.date_format)
     %}
