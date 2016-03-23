@@ -11,6 +11,13 @@
         </a>
     </div>
 
+    {% set comment_date = function('date_create', comment.comment_date) %}
+    {% set comment_date_universal = comment.comment_date|date('Y-m-d H:i:s') %}
+    {% set date_days_diff_obj = function('date_diff', comment_date, date_today) %}
+    {% set date_days_diff_str = (date_days_diff_obj.format('%d') == '0')
+    ? comment.comment_date|date(site.time_format)
+    : comment.comment_date|date(site.date_format)
+    %}
     <div class="media-body">
         <div class="panel panel-default">
             <header class="panel-heading comment-meta text-left clearfix">
@@ -18,15 +25,7 @@
                     <h5 class="media-heading fn">
                         {{ comment.author.name }} <span class="says sr-only">{{ 'says'|translate }}:</span>
                         <small class="text-muted">
-                            {% set comment_date = function('date_create', comment.comment_date) %}
-                            {% set comment_date_pretty = comment.comment_date|date('Y-m-d H:i:s') %}
-                            {% set date_days_diff_obj = function('date_diff', comment_date, date_today) %}
-                            {% set date_days_diff = date_days_diff_obj.format('%d') %}
-                            {% set date_days_diff_str = (date_days_diff == '0')
-                            ? 'Today'|translate
-                            : date_days_diff ~ ' ' ~ 'day(s) ago'|translate
-                            %}
-                            <time class="comment-metadata comment-date" datetime="{{ comment_date_pretty }}" title="{{ comment_date_pretty }}">
+                            <time class="comment-metadata comment-date" datetime="{{ comment_date_universal }}" title="{{ comment_date_universal }}">
                                 <i class="glyphicon glyphicon-time"></i>
                                 {{ date_days_diff_str }}
                             </time>

@@ -33,6 +33,9 @@ class WordPressSite extends TimberSite
     private $twig_context;
     private $twig_locations;
 
+    private $date_format;
+    private $time_format;
+
     public function __construct() {
 
         // Call TimberSite constructor
@@ -85,6 +88,9 @@ class WordPressSite extends TimberSite
 
         // Set language ISO
         $this->language_ISO = substr($this->language, 0, 2);
+
+        $this->date_format = get_option('date_format');
+        $this->time_format = get_option('time_format');
     }
 
     /**
