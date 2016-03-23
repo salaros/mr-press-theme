@@ -21,17 +21,14 @@ class TwigExtensions extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter( 'translate',  array($this, 'get_translation') ),
-            new \Twig_SimpleFilter( 'parseGallery', array($this, 'get_gallery_details') ),
-            new \Twig_SimpleFilter( 'birthToAge', array($this, 'get_age_from_birth_date') ),
-            new \Twig_SimpleFilter( 'fixDate', array($this, 'get_fixed_date') ),
         );
     }
 
     /**
     * Translate function used as Twig filter for gettext-driven translations
     * @param  string $label           The label to translate
-    * @param  string [$domain         = null] Domain of the translation, fallbacks on theme name if null
-    * @return string Translated label
+    * @param  string [$domain= null]  Domain of the translation, fallbacks on default text domain if null
+    * @return string                  Translated label
     */
     public static function get_translation($label, $domain = null) {
 
