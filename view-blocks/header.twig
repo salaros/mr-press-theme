@@ -17,7 +17,15 @@
             {% if top_nav_menu %}
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="navbar-collapse collapse" id="top-static-navbar">
+                <!-- main menu items -->
                 {% include 'menu-items.twig' with { 'menu': top_nav_menu } %}
+                <!-- /main menu items -->
+                <!-- search button -->
+                {% include 'menu-search-button.twig' %}
+                <!-- /search button -->
+                <!-- login menu -->
+                {% include 'menu-login.twig' %}
+                <!-- /login menu -->
             </div>
             {% endif %}
         </div>
