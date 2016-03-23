@@ -13,7 +13,7 @@
 
     <p>{{post.get_preview(128, false, false)}}</p>
     <a class="btn btn-primary" href="{{ post.link }}">
-        {{ 'Read More'|translate }}
+        {{ 'Continue reading %s'|translate|format('') }}
         <i class="fa fa-angle-right"></i>
     </a>
 </article>
