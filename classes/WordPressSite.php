@@ -130,14 +130,19 @@ class WordPressSite extends TimberSite
         add_action( 'after_setup_theme', array( $this, 'load_text_domain' ) );
 
         // Remove Emoji detection (for it's poor implementation)
-        add_action( 'init', array( $this, 'remove_emoji_detection' ) );
+        add_action( 'init', array( $this, 'remove_emoji_detection' ) ); // TODO make it a theme option
+
+        // Remove CSS <link id="xxx" attrib for PageSpeed compatibility
+        // https://blog.codecentric.de/en/2011/10/wordpress-and-mod_pagespeed-why-combine_css-does-not-work
+        add_filter( 'style_loader_tag', array( $this, 'process_style_tags' ) ); // TODO make it a theme option
 
         // Customize Timer/Twig views location
         Timber::$dirname = $this->twig_locations;
     }
 
-    public function process_styles_and_scripts() {
-
+    // Remove CSS <link id="xxx" attrib for pagespeed compatibility
+    public function process_style_tags($link) {
+        return preg_replace("/id='.*-css'/", "", $link);
     }
 
     public function bootstrapify_init() {
