@@ -43,7 +43,7 @@ class NavMenuTools {
         if ( array_key_exists( 'slug', $menu_item ) ) {
             $page = TwigExtensions::get_page_by_slug($menu_item['slug']);
             $menu_item['id'] = $page->ID;
-            $menu_item['title'] = translate( $page->title );
+            $menu_item['title'] = $page->title;
         }
 
         $item = [
