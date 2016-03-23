@@ -416,10 +416,16 @@ class WordPressSite extends TimberSite
     }
 
     public function load_text_domain() {
+        $text_domain = $this->get_text_domain();
+
+        // set default text domain for Twig 'translate' filter
+        TwigExtensions::set_default_text_domain($text_domain);
+
         if ( is_child_theme() ) {
-            load_child_theme_textdomain($this->get_text_domain(), $this->lang_path);
+            load_theme_textdomain($text_domain, $this->theme->parent->langs);
+            load_child_theme_textdomain($text_domain, $this->theme->langs);
         } else {
-            load_theme_textdomain($this->get_text_domain(), $this->parent_lang_path);
+            load_theme_textdomain($text_domain, $this->theme->langs);
         }
     }
 
