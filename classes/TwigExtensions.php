@@ -26,7 +26,7 @@ class TwigExtensions extends \Twig_Extension
     public function getFilters()
     {
         return array(
-            new \Twig_SimpleFilter( 'translate',  array($this, 'get_translation') ),
+            new \Twig_SimpleFilter( 'translate',  array($this, 'get_translation_with_context') ),
         );
     }
 
@@ -45,6 +45,27 @@ class TwigExtensions extends \Twig_Extension
         return ($translation !== $label)
             ? $translation
             : __($label);
+    }
+
+    /**
+    * Translate function used as Twig filter for gettext-driven translations
+    * @param  string $label           The label to translate
+    * @param  string [$context= null] Context for the translation, fallbacks on regular translation if null
+    * @param  string [$domain= null]  Domain of the translation, fallbacks on default text domain if null
+    * @return string                  Translated label
+    */
+    public static function get_translation_with_context($label, $context = null, $domain = null) {
+
+        if (empty($context))
+            return self::get_translation($label, $domain);
+
+        if(empty($domain))
+            $domain = self::$default_text_domain;
+
+        $translation = _x($label, $context, $domain);
+        return ($translation !== $label)
+            ? $translation
+            : _x($label, $context);
     }
 
     /**
