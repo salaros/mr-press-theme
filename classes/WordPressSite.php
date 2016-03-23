@@ -330,6 +330,10 @@ class WordPressSite extends TimberSite
     }
 
     public function register_context(array $context) {
+        global $wp;
+
+        $this->twig_context['redirect_url'] = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
+
         // Add site object to the context
         $this->twig_context['site'] = $this;
 
