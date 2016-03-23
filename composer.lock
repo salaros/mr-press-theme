@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bde781b513b5cbcb81f7404e621235b5",
-    "content-hash": "2a34bff3b2a037945539de9b4662accc",
+    "hash": "3f814ce3a9641d6f004a1d9603621e05",
+    "content-hash": "6beafc5257c84f5e91504af7309789fa",
     "packages": [
         {
             "name": "composer/installers",
@@ -124,6 +124,26 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/advanced-custom-fields/"
+        },
+        {
+            "name": "wpackagist-plugin/theme-my-login",
+            "version": "6.4.4",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/theme-my-login/",
+                "reference": "tags/6.4.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/theme-my-login.6.4.4.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/theme-my-login/"
         },
         {
             "name": "wpackagist-plugin/timber-library",

@@ -24,7 +24,8 @@
     ],
     "require": {
         "wpackagist-plugin/timber-library"          : "*",
-        "wpackagist-plugin/advanced-custom-fields"  : "*"
+        "wpackagist-plugin/advanced-custom-fields"  : "*",
+        "wpackagist-plugin/theme-my-login"          : "*"
     },
     "extra": {
         "installer-paths": {
