@@ -24,6 +24,12 @@ class NavMenuTools {
             $item_id = wp_update_nav_menu_item( $menu_id, 0, $item );
             if( $item_id <= 0 ) continue; // TODO log the error
 
+            if ( isset( $menu_item['data'] ) && is_array( $menu_item['data'] ) ) {
+                foreach( $menu_item['data'] as $meta_key => $meta_value ){
+                    update_post_meta($item_id, '_menu_item_'.$meta_key, $meta_value);
+                }
+            }
+
             if ( ! array_key_exists( 'children', $menu_item ) ) {
                 continue;
             }
