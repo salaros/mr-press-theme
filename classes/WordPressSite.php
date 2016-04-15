@@ -6,7 +6,7 @@ use \Timber as Timber;
 use \TimberSite as TimberSite;
 use \TimberMenu as TimberMenu;
 use \Twig_Extension_StringLoader as Twig_Extension_StringLoader;
-use Salaros\Wordpress\Template\NavMenuTools;
+
 use Salaros\Wordpress\Template\TwigExtensions;
 use Salaros\Wordpress\Template\AdvancedCustomFields;
 use Salaros\Wordpress\Template\Bootstrapify;
@@ -364,8 +364,8 @@ class WordPressSite extends TimberSite
 
         // Add all the menus to the context
         foreach($this->site_menus as $menu_name => $menu_items) {
-            $menu_name = preg_replace('/(\s|-)+/', '_', $menu_name);
-            $this->twig_context[$menu_name] = new TimberMenu($menu_name);
+            $menu_var_name = preg_replace('/(\s|-)+/', '_', $menu_name);
+            $this->twig_context[$menu_var_name] = new TimberMenu($menu_name);
         }
 
         return array_merge($this->twig_context, $context);
