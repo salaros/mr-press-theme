@@ -2,6 +2,8 @@
 
 namespace Salaros\Wordpress\Template;
 
+use \Timber as Timber;
+
 class Bootstrapify {
 
     public static function init() {
@@ -22,20 +24,20 @@ class Bootstrapify {
             $author_url = esc_attr( @$commenter['comment_author_url'] );
 
             $fields['author'] = sprintf(
-                '<div class="form-group comment-form-author form-control-wrapper">
-                    <label for="author" class="control-label">%s:</label>
+                '<div class="form-group comment-form-author form-control-wrapper label-floating empty">
+                    <label for="author" class="control-label">%s</label>
                     <input class="form-control" id="author" name="author" type="text" autocomplete="off" value="%s" size="30" %s %s />
                 </div>', __('Name'), $author_url, $require_name_email_attr, $aria_require_name_email);
 
             $fields['email'] = sprintf(
-                '<div class="form-group comment-form-email form-control-wrapper">
-                    <label for="email" class="control-label">%s:</label>
+                '<div class="form-group comment-form-email form-control-wrapper label-floating empty">
+                    <label for="email" class="control-label">%s</label>
                     <input class="form-control" id="email" name="email" type="email" autocomplete="off" value="%s" size="30" %s %s />
                 </div>', __('Email'), $author_url, $require_name_email_attr, $aria_require_name_email);
 
             $fields['url'] = sprintf(
-                '<div class="form-group comment-form-email form-control-wrapper">
-                    <label for="url" class="control-label">%s:</label>
+                '<div class="form-group comment-form-email form-control-wrapper label-floating empty">
+                    <label for="url" class="control-label">%s</label>
                     <input class="form-control" id="url" name="url" type="url" autocomplete="off" value="%s" size="30" />
                 </div>', __('Website'), $author_url);
 
@@ -45,16 +47,17 @@ class Bootstrapify {
         });
 
         add_filter( 'comment_form_defaults', function ( $args ) {
-            $args['class_submit'] = 'btn btn-success'; // since WP 4.1
-            $args['class_form'] = "comment-for<m well";
+            $args['class_submit'] = 'btn btn-primary btn-raised'; // since WP 4.1
+            $args['class_form'] = "comment-form";
 
             $args['comment_notes_before'] = '';
             $args['comment_notes_after'] = '';
 
-            $args['comment_field'] =
-                '<div class="form-group comment-form-comment form-control-wrapper">
-                        <textarea class="form-control" id="comment" name="comment" cols="45" autocomplete="off" rows="5" required aria-required="true"></textarea>
-                    </div>';
+            $args['comment_field'] = sprintf(
+                '<div class="form-group comment-form-comment form-control-wrapper label-floating empty">
+                    <label for="comment" class="control-label">%s</label>
+                    <textarea class="form-control" id="comment" name="comment" cols="45" autocomplete="off" rows="5" required aria-required="true"></textarea>
+                </div>', __('Your Comment'));
 
             return $args;
         });
