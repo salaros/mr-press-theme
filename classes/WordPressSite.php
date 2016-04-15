@@ -421,7 +421,7 @@ class WordPressSite extends TimberSite
         }
     }
 
-    public function remove_taxonomy(array $taxonomies) {
+    public function remove_taxonomy($taxonomy) {
         global $wp_taxonomies;
         if ( taxonomy_exists( $taxonomy) ) {
             unset( $wp_taxonomies[$taxonomy]);
