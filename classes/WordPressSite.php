@@ -109,6 +109,7 @@ class WordPressSite extends TimberSite
         // Register actions for custom scripts, styles, menus etc
         add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
         add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
+        add_filter( 'script_loader_tag', array( $this, 'process_script_tag' ), 11, 2 );
 
         // Deregister scripts and styles
         add_action( 'admin_enqueue_scripts', array( $this, 'register_admin_scripts' ) );
@@ -159,6 +160,11 @@ class WordPressSite extends TimberSite
         if(current_user_can('administrator'))
             return;
         add_filter( 'show_admin_bar', '__return_false' );
+    }
+
+    public function process_script_tag($tag, $handle) {
+        $processed_tag = apply_filters( sprintf( '%s_loaded', $handle ), $tag );
+        return $processed_tag ?: $tag;
     }
 
     public function process_style_tags($link) {
