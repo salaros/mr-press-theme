@@ -20,6 +20,7 @@ class TwigExtensions extends \Twig_Extension
         return array(
             new \Twig_SimpleFunction( 'slugToPage', array($this, 'get_page_by_slug') ),
             new \Twig_SimpleFunction( 'slugToUrl', array($this, 'get_page_url_by_slug') ),
+            new \Twig_SimpleFunction( 'slugToID', array($this, 'get_page_id_by_slug') ),
         );
     }
 
@@ -27,6 +28,7 @@ class TwigExtensions extends \Twig_Extension
     {
         return array(
             new \Twig_SimpleFilter( 'translate',  array($this, 'get_translation_with_context') ),
+            new \Twig_SimpleFilter( 'dump',  array($this, 'get_dump_info') ),
         );
     }
 
@@ -45,6 +47,13 @@ class TwigExtensions extends \Twig_Extension
         return ($translation !== $label)
             ? $translation
             : __($label);
+    }
+    
+    public static function get_dump_info($variable) {
+        ob_start();
+        var_dump($variable);
+        $result = ob_get_clean();
+        return sprintf("<pre>%s</pre>", $result);
     }
 
     /**
@@ -92,6 +101,13 @@ class TwigExtensions extends \Twig_Extension
     * @return WP_Post The URL of the page
     */
     public function get_page_url_by_slug($page_slug, $post_type = 'page', $output = OBJECT ) {
-        return get_permalink(get_page_by_slug($page_slug));
+        return get_permalink($this->get_page_by_slug($page_slug));
+    }
+    
+    public function get_page_id_by_slug($page_slug) {
+        $page = get_page_by_path($page_slug);
+        return ($page)
+            ? $page->ID
+            : null;
     }
 }
