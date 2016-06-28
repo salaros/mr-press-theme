@@ -317,7 +317,7 @@ class WordPressSite extends TimberSite
      * @return  void
      *
      */
-    public static function deregister_styles( ) {
+    public function deregister_styles( ) {
         array_walk( $this->styles_remove, 'wp_dequeue_style' );
         array_walk( $this->styles_remove, 'wp_deregister_style' );
     }
@@ -328,7 +328,7 @@ class WordPressSite extends TimberSite
      * @return  void
      *
      */
-    public static function deregister_scripts( ) {
+    public function deregister_scripts( ) {
         array_walk( $this->scripts_remove, 'wp_dequeue_script' );
         array_walk( $this->scripts_remove, 'wp_deregister_script' );
     }
