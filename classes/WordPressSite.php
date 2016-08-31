@@ -366,7 +366,7 @@ class WordPressSite extends TimberSite
         $this->twig_context['redirect_url'] = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
 
         // Add site object to the context
-        $this->twig_context['site'] = $this;
+        $context['site'] = $this;
 
         // Add all the menus to the context
         foreach($this->site_menus as $menu_name => $menu_items) {
