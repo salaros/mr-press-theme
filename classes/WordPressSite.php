@@ -78,6 +78,10 @@ class WordPressSite extends TimberSite
         $this->theme->bower_url = sprintf("%s/bower-asset", WP_CONTENT_URL);
         $this->theme->static_url = sprintf("%s/static", $this->theme->link);
 
+        $theme_option_key = str_replace('-', '_', $this->theme->slug);
+        $theme_option_key = sprintf('%s_options', $theme_option_key);
+        $this->theme->options = get_option($theme_option_key);
+
         // Set user-related stuff
         $this->user = (is_user_logged_in())
             ? wp_get_current_user()
