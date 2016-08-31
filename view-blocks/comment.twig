@@ -1,14 +1,18 @@
 <article class="comment-body media parent {{ comment.comment_type }} comment-order-{{ loop.index }}" data-template="comment.twig">
     <div class="media-left pull-left">
-        {% set author_avatar_url = function('get_avatar_url', comment.author.id ) %}
-        <a href="http://author-url.com" class="author-link url" rel="external nofollow">
+        {% set comment_author_url = fn('get_comment_author_url', comment.id) %}
+        {% if (comment_author_url) %}
+        <a href="{{ comment_author_url }}" class="author-link url" rel="external nofollow">
+        {% endif %}
             <figure class="thumbnail">
-                <img alt="" src="http://gravatar-url.com" srcset="{{ author_avatar_url }}" class="avatar media-object img-responsive avatar-96 photo" width="96" />
+                <img alt="{{ comment.author.name }}" src="{{ comment.author.avatar.abs_url }}" class="avatar media-object img-responsive avatar-96 photo" width="96" />
                 <figcaption class="text-center">
                     <small>{{ comment.author.name }}</small>
                 </figcaption>
             </figure>
+        {% if (comment_author_url) %}
         </a>
+        {% endif %}
     </div>
 
     {% set comment_date_obj = function('date_create', comment.comment_date) %}
