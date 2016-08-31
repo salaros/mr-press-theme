@@ -9,7 +9,7 @@ if ( !class_exists( 'Timber' ) && php_sapi_name() !== 'cli') {
     </div>";
 
     if ( is_admin() ) {
-        add_action( 'admin_notices', function() {
+        add_action( 'admin_notices', function() use($error_message) {
             echo ($error_message);
         });
     } else {
