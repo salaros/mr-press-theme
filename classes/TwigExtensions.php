@@ -21,6 +21,11 @@ class TwigExtensions extends \Twig_Extension
             new \Twig_SimpleFunction( 'slugToPage', array($this, 'get_page_by_slug') ),
             new \Twig_SimpleFunction( 'slugToUrl', array($this, 'get_page_url_by_slug') ),
             new \Twig_SimpleFunction( 'slugToID', array($this, 'get_page_id_by_slug') ),
+            new \Twig_SimpleFunction( 'post', array($this, 'get_timber_post') ),
+            new \Twig_SimpleFunction( 'sidebar', array($this, 'get_sidebar_widgets') ),
+            new \Twig_SimpleFunction( 'url', array($this, 'get_url') ),
+            new \Twig_SimpleFunction( 'thumbnail_url', array($this, 'get_thumbnail_url') ),
+            
         );
     }
 
@@ -110,4 +115,23 @@ class TwigExtensions extends \Twig_Extension
             ? $page->ID
             : null;
     }
+
+    public function get_timber_post($post_id) {
+        return new \TimberPost($post_id);
+    }
+
+    public function get_sidebar_widgets($sidebar_slug) {
+        return \Timber::get_widgets($sidebar_slug);
+    }
+
+    public function get_url($url) {
+        return (preg_match('/(http|https):\/\//i', $url)) 
+            ? $url
+            : sprintf('http://%s', $url);
+    }
+
+    public function get_thumbnail_url($post_id) {
+        return wp_get_attachment_url( get_post_thumbnail_id($post_id) );
+    }   
+    
 }
