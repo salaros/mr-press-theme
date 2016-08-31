@@ -33,8 +33,8 @@ class WordPressSite extends TimberSite
     private $twig_context;
     private $twig_locations;
 
-    private $date_format;
-    private $time_format;
+    public $date_format;
+    public $time_format;
 
     public function __construct() {
 
