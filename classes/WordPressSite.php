@@ -370,7 +370,9 @@ class WordPressSite extends TimberSite
 
         // Add all the menus to the context
         foreach($this->site_menus as $menu_name => $menu_items) {
-            $menu_var_name = preg_replace('/(\s|-)+/', '_', $menu_name);
+            $menu_var_name = (is_int($menu_name) && intval($menu_name) > 0)
+                ? (get_term($menu_name)->slug ?: $menu_name)
+                : preg_replace('/(\s|-)+/', '_', $menu_name);
             $this->twig_context[$menu_var_name] = new TimberMenu($menu_name);
         }
 
