@@ -25,6 +25,7 @@ class TwigExtensions extends \Twig_Extension
             new \Twig_SimpleFunction( 'sidebar', array($this, 'get_sidebar_widgets') ),
             new \Twig_SimpleFunction( 'url', array($this, 'get_url') ),
             new \Twig_SimpleFunction( 'thumbnail_url', array($this, 'get_thumbnail_url') ),
+            new \Twig_SimpleFunction( 'pdf_to_image', array( $this, 'pdf_to_image_obj' ) ),
             
         );
     }
@@ -132,6 +133,20 @@ class TwigExtensions extends \Twig_Extension
 
     public function get_thumbnail_url($post_id) {
         return wp_get_attachment_url( get_post_thumbnail_id($post_id) );
-    }   
-    
+    }
+
+    public function pdf_to_image_obj($pdf_path) {
+        $image_path = sprintf( '%s.jpg', $pdf_path );
+        $image_url = WP_SITEURL . '/' . strstr($image_path, 'wp-content');
+        // var_dump($image_url);die;
+        if ( file_exists( $image_path ) ) {
+            return new \TimberImage( $image_url );
+        }
+
+        $image = new \Imagick( $pdf_path . '[0]' );
+        $image->setImageFormat( 'jpg' );
+        $image->writeImage( $image_path );
+        return new \TimberImage( $image_url );
+    }
 }
+
