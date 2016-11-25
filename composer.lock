@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3f814ce3a9641d6f004a1d9603621e05",
+    "hash": "55ab882823c80013ab158f6d6c85d84a",
     "content-hash": "6beafc5257c84f5e91504af7309789fa",
     "packages": [
         {
             "name": "composer/installers",
-            "version": "v1.0.23",
+            "version": "v1.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/installers.git",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e"
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/installers/zipball/6213d900e92647831f7a406d5c530ea1f3d4360e",
-                "reference": "6213d900e92647831f7a406d5c530ea1f3d4360e",
+                "url": "https://api.github.com/repos/composer/installers/zipball/d78064c68299743e0161004f2de3a0204e33b804",
+                "reference": "d78064c68299743e0161004f2de3a0204e33b804",
                 "shasum": ""
             },
             "require": {
@@ -40,8 +40,8 @@
                 }
             },
             "autoload": {
-                "psr-0": {
-                    "Composer\\Installers\\": "src/"
+                "psr-4": {
+                    "Composer\\Installers\\": "src/Composer/Installers"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -56,28 +56,35 @@
                 }
             ],
             "description": "A multi-framework Composer library installer",
-            "homepage": "http://composer.github.com/installers/",
+            "homepage": "https://composer.github.io/installers/",
             "keywords": [
                 "Craft",
                 "Dolibarr",
                 "Hurad",
+                "ImageCMS",
                 "MODX Evo",
+                "Mautic",
                 "OXID",
+                "Plentymarkets",
+                "RadPHP",
                 "SMF",
                 "Thelia",
                 "WolfCMS",
                 "agl",
                 "aimeos",
                 "annotatecms",
+                "attogram",
                 "bitrix",
                 "cakephp",
                 "chef",
+                "cockpit",
                 "codeigniter",
                 "concrete5",
                 "croogo",
                 "dokuwiki",
                 "drupal",
                 "elgg",
+                "expressionengine",
                 "fuelphp",
                 "grav",
                 "installer",
@@ -94,28 +101,30 @@
                 "piwik",
                 "ppi",
                 "puppet",
+                "reindex",
                 "roundcube",
                 "shopware",
                 "silverstripe",
                 "symfony",
                 "typo3",
                 "wordpress",
+                "yawik",
                 "zend",
                 "zikula"
             ],
-            "time": "2016-01-27 12:54:22"
+            "time": "2016-08-13 20:53:52"
         },
         {
             "name": "wpackagist-plugin/advanced-custom-fields",
-            "version": "4.4.5",
+            "version": "4.4.11",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/advanced-custom-fields/",
-                "reference": "tags/4.4.5"
+                "reference": "tags/4.4.11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/advanced-custom-fields.4.4.11.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -127,15 +136,15 @@
         },
         {
             "name": "wpackagist-plugin/theme-my-login",
-            "version": "6.4.4",
+            "version": "6.4.6",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/theme-my-login/",
-                "reference": "tags/6.4.4"
+                "reference": "tags/6.4.6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/theme-my-login.6.4.4.zip",
+                "url": "https://downloads.wordpress.org/plugin/theme-my-login.6.4.6.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -147,15 +156,15 @@
         },
         {
             "name": "wpackagist-plugin/timber-library",
-            "version": "0.22.5",
+            "version": "1.1.10",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/timber-library/",
-                "reference": "tags/0.22.5"
+                "reference": "tags/1.1.10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/timber-library.0.22.5.zip",
+                "url": "https://downloads.wordpress.org/plugin/timber-library.1.1.10.zip",
                 "reference": null,
                 "shasum": null
             },
