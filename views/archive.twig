@@ -8,3 +8,8 @@
         {% endif %}
     {% endfor %}
 {% endblock %}
+
+{% block footer %}
+    {% include 'pagination.twig' %}
+    {% include 'footer.twig' %}
+{% endblock %}
