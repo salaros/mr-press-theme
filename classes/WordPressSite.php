@@ -221,14 +221,14 @@ class WordPressSite extends TimberSite
      * @return  void
      *
      */
-    private function register_scripts_generic(array $scripts) {
+    private function register_scripts_generic( array $scripts ) {
         global $wp_scripts;
 
-        foreach($scripts as $handle => $script ) {
-            if ( !empty( $script['src'] ) ) {
-                wp_register_script( $handle, $script['src'], $script['deps'], $script['ver'], $script['in_footer']);
+        foreach ( $this->scripts as $handle => $script ) {
+            if ( ! empty( $script['src'] ) ) {
+                wp_register_script( $handle, $script['src'], $script['deps'], $script['ver'], $script['in_footer'] );
                 if ( is_array( $script['data'] ) ) {
-                    foreach ( $script['data'] as $key=>$value ) {
+                    foreach ( $script['data'] as $key => $value ) {
                         $wp_scripts->add_data( $handle, $key, $value );
                     }
                 }
@@ -294,7 +294,7 @@ class WordPressSite extends TimberSite
     private function register_styles_generic( array $styles ) {
         global $wp_scripts;
 
-        foreach( $styles as $handle => $stylesheet) {
+        foreach( $this->styles as $handle => $stylesheet) {
             wp_register_style( $handle, $stylesheet['src'], $stylesheet['deps'], $stylesheet['ver'], $stylesheet['media']);
             if ( is_array( $stylesheet['data'] ) ) {
                 foreach ( $stylesheet['data'] as $key=>$value ) {
