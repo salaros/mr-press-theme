@@ -61,7 +61,7 @@ class WordPressSite extends TimberSite {
 
 		$this->menu_locations = [];
 
-		$this->ui_toolkit = 'bootstrap';
+		$this->ui_toolkit = 'semantic-ui';
 
 		// Set Twig-related properties
 		$this->twig_context = [];
@@ -163,9 +163,10 @@ class WordPressSite extends TimberSite {
 		add_action( 'after_setup_theme', array( $this, 'register_menu_locations' ) );
 
 		// Add UI toolkit-related locations
-		$this->twig_locations[] = sprintf( 'view-%s', $this->ui_toolkit );
-		$this->twig_locations[] = sprintf( 'view-%s/comments', $this->ui_toolkit );
-		$this->twig_locations[] = sprintf( 'view-%s/login', $this->ui_toolkit );
+		$this->twig_locations[] = sprintf( '%s/templates', $this->ui_toolkit );
+		$this->twig_locations[] = sprintf( '%s/view-blocks', $this->ui_toolkit );
+		$this->twig_locations[] = sprintf( '%s/comments', $this->ui_toolkit );
+		$this->twig_locations[] = sprintf( '%s/login', $this->ui_toolkit );
 
 		// Customize Timer/Twig views location
 		Timber::$dirname = $this->twig_locations;

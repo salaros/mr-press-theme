@@ -8,17 +8,6 @@ Author:             Zhmayev Yaroslav <salaros@salaros.com>
 Author URI:         https://github.com/salaros
 License:            MIT
 License URI:        https://opensource.org/licenses/MIT
-Tags:               bootstrap, twig, timber, mr-press, responsive-layout, accessibility-ready
+Tags:               twig, timber, mr-press, responsive-layout
 Text Domain:        mr-press-theme
-Version:            0.4.0
 */
-
-ul.nav-login .dropdown-form {
-    padding: 15px;
-    min-width: 250px
-}
-
-ul.nav-search-from .dropdown-search {
-    padding: 15px;
-    min-width: 480px
-}
