@@ -11,6 +11,8 @@ class Bootstrapify {
 	}
 
 	private static function tweak_comment_form() {
+
+		// Override the appearance of author, email and URL fields
 		add_filter( 'comment_form_default_fields', function ( $fields ) {
 
 			$commenter = wp_get_current_commenter();
@@ -25,11 +27,13 @@ class Bootstrapify {
 			$fields['email'] = Timber::compile( 'comment-form-email.twig', $context );
 			$fields['url'] = Timber::compile( 'comment-form-url.twig', $context );
 
+			// TODO make it an option
 			// unset($fields['url']);
 
 			return $fields;
 		});
 
+		// Remove useless form content, override submit button, comment text field etc
 		add_filter( 'comment_form_defaults', function ( $args ) {
 
 			$args['title_reply'] = '';
