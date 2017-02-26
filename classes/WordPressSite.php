@@ -177,6 +177,12 @@ class WordPressSite extends TimberSite
     }
 
     public function process_script_tag($tag, $handle) {
+        if ( wp_scripts()->get_data( $handle, 'defer' ) ) {
+            $tag = str_replace( '></', ' defer></', $tag );
+        }
+        if ( wp_scripts()->get_data( $handle, 'async' ) ) {
+            $tag = str_replace( '></', ' async></', $tag );
+        }
         $processed_tag = apply_filters( sprintf( '%s_loaded', $handle ), $tag );
         return $processed_tag ?: $tag;
     }
