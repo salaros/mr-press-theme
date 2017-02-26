@@ -167,8 +167,6 @@ class WordPressSite extends TimberSite
      *
      */
     public function hide_admin_bar_for_users() {
-        if(current_user_can('administrator'))
-            return;
         add_filter( 'show_admin_bar', '__return_false' );
     }
 
