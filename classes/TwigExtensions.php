@@ -90,10 +90,10 @@ class TwigExtensions extends \Twig_Extension
     * @param  string [$output = OBJECT]    Tells the funcion the preferred type for the returned object
     * @return WP_Post The object with the given slug, casted to the type specified by output parameter (default is WP_Post )
     */
-    public static function get_page_by_slug($page_slug, $post_type = 'page', $output = OBJECT ) {
+    public static function get_page_by_slug($page_slug, $post_type = 'page', $output = OBJECT, $post_status = 'publish' ) {
         global $wpdb;
-        $sql = "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type= %s AND post_status = 'publish'" ;
-        $page = $wpdb->get_var( $wpdb->prepare($sql, $page_slug, $post_type) );
+        $sql = "SELECT ID FROM $wpdb->posts WHERE post_name = %s AND post_type = %s AND post_status = %s" ;
+        $page = $wpdb->get_var( $wpdb->prepare($sql, $page_slug, $post_type, $post_status) );
         return ( $page )
             ? get_post($page, $output)
             : null;
