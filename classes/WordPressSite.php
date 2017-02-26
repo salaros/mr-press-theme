@@ -37,6 +37,8 @@ class WordPressSite extends TimberSite {
 
 	public $menu_locations;
 
+	public $ui_toolkit;
+
 	public function __construct() {
 
 		// Call TimberSite constructor
@@ -58,6 +60,8 @@ class WordPressSite extends TimberSite {
 		$this->taxonomies = [];
 
 		$this->menu_locations = [];
+
+		$this->ui_toolkit = 'bootstrap';
 
 		// Set Twig-related properties
 		$this->twig_context = [];
@@ -157,6 +161,11 @@ class WordPressSite extends TimberSite {
 		add_action( 'init', array( $this, 'hide_admin_bar_for_users' ) ); // TODO make it a theme option
 
 		add_action( 'after_setup_theme', array( $this, 'register_menu_locations' ) );
+
+		// Add UI toolkit-related locations
+		$this->twig_locations[] = sprintf( 'view-%s', $this->ui_toolkit );
+		$this->twig_locations[] = sprintf( 'view-%s/comments', $this->ui_toolkit );
+		$this->twig_locations[] = sprintf( 'view-%s/login', $this->ui_toolkit );
 
 		// Customize Timer/Twig views location
 		Timber::$dirname = $this->twig_locations;
