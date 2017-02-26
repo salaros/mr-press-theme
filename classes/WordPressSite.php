@@ -36,6 +36,8 @@ class WordPressSite extends TimberSite
     public $date_format;
     public $time_format;
 
+    public $menu_locations;
+
     public function __construct() {
 
         // Call TimberSite constructor
@@ -55,6 +57,8 @@ class WordPressSite extends TimberSite
         // Set post type and taxonomy-related stuff
         $this->post_types = [];
         $this->taxonomies = [];
+
+        $this->menu_locations = [];
 
         // Set Twig-related properties
         $this->twig_context = [];
@@ -150,6 +154,8 @@ class WordPressSite extends TimberSite
         // Remove admin bar for non-admin users
         add_action('init', array( $this, 'hide_admin_bar_for_users' ) ); // TODO make it a theme option
 
+        add_action( 'after_setup_theme', array( $this, 'register_menu_locations' ) );
+
         // Customize Timer/Twig views location
         Timber::$dirname = $this->twig_locations;
     }
@@ -164,6 +170,12 @@ class WordPressSite extends TimberSite
         if(current_user_can('administrator'))
             return;
         add_filter( 'show_admin_bar', '__return_false' );
+    }
+
+    public function register_menu_locations() {
+        foreach ( $this->menu_locations as $slug => $title ) {
+            register_nav_menu( $slug, $title );
+        }
     }
 
     public function process_script_tag($tag, $handle) {
@@ -362,6 +374,11 @@ class WordPressSite extends TimberSite
 
     public function add_to_context(array $context_entry) {
         $this->twig_context = array_merge( $this->twig_context, $context_entry );
+    }
+
+    
+    public function add_menu_location( $slug, $title ) {
+        $this->menu_locations[$slug] = $title;
     }
 
     public function register_context(array $context) {
