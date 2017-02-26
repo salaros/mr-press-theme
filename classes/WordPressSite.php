@@ -147,6 +147,9 @@ class WordPressSite extends TimberSite
         // Remove Emoji detection (for it's poor implementation)
         add_action( 'init', array( $this, 'remove_emoji_detection' ) ); // TODO make it a theme option
 
+        // Disable Embeds in WordPress
+        add_action( 'init', array( $this, 'remove_embeds' ) ); // TODO make it a theme option
+
         // Remove CSS <link id="xxx" attrib for PageSpeed compatibility
         // https://blog.codecentric.de/en/2011/10/wordpress-and-mod_pagespeed-why-combine_css-does-not-work
         add_filter( 'style_loader_tag', array( $this, 'process_style_tags' ) ); // TODO make it a theme option
@@ -492,10 +495,72 @@ class WordPressSite extends TimberSite
         }
     }
 
+    // Disable emoji functionality introduced in WordPress 4.2
     public function remove_emoji_detection() {
+        // all actions related to emojis
+        remove_action( 'admin_print_styles', 'print_emoji_styles' );
         remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
         remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
         remove_action( 'wp_print_styles', 'print_emoji_styles' );
-        remove_action( 'admin_print_styles', 'print_emoji_styles' );
+        remove_filter( 'wp_mail', 'wp_staticize_emoji_for_email' );
+        remove_filter( 'the_content_feed', 'wp_staticize_emoji' );
+        remove_filter( 'comment_text_rss', 'wp_staticize_emoji' );
+
+        // remove the DNS prefetch
+        add_filter( 'emoji_svg_url', '__return_false' );
+
+        // filter to remove TinyMCE emojis
+        add_filter( 'tiny_mce_plugins', function ( $plugins ) {
+            if ( is_array( $plugins ) ) {
+                return array_diff( $plugins, array( 'wpemoji' ) );
+            } else {
+                return array();
+            }
+        });
+    }
+
+    // Disable so-called enhanced embeds introduced in WordPress 4.4
+    public function remove_embeds() {
+
+        // Use the wp_dequeue_script function to dequeue 'wp-embed' script
+        add_action( 'wp_footer', function (){
+            wp_dequeue_script( 'wp-embed' );
+        });
+
+        // Remove the REST API endpoint.
+        remove_action( 'rest_api_init', 'wp_oembed_register_route' );
+
+        // Remove oEmbed discovery links.
+        remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
+
+        // Remove oEmbed-specific JavaScript from the front-end
+        remove_action( 'wp_head', 'wp_oembed_add_host_js' );
+
+        // Turn off oEmbed auto discovery.
+        add_filter( 'embed_oembed_discover', '__return_false' );
+
+        // Remove oEmbed-specific JavaScript from the back-end
+        add_filter( 'tiny_mce_plugins', function ( $plugins ) {
+            return array_diff( $plugins, array( 'wpembed' ) );
+        } );
+
+        // Remove all embeds rewrite rules.
+        add_filter( 'rewrite_rules_array', function ( $rules ) {
+            foreach ( $rules as $rule => $rewrite ) {
+                if ( false !== strpos( $rewrite, 'embed=true' ) ) {
+                    unset( $rules[ $rule ] );
+                    break;
+                }
+            }
+
+            return $rules;
+        } );
+        flush_rewrite_rules();
+
+        // Remove filter of the oEmbed result before any HTTP requests are made.
+        remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result', 10 );
+
+        // Don't filter oEmbed results.
+        remove_filter( 'oembed_dataparse', 'wp_filter_oembed_result', 10 );
     }
 }
