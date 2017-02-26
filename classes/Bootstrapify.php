@@ -40,8 +40,16 @@ class Bootstrapify {
 			$args['comment_notes_after'] = Timber::compile( 'comment-form-notes-after.twig' );
 			$args['comment_field'] = Timber::compile( 'comment-form-textarea.twig' );
 
-
 			return $args;
 		});
+
+		// Move comment text field to the bottom of the form
+		add_filter( 'comment_form_fields', function ( $fields ) {
+			$comment_field_bak = $fields['comment'];
+			unset( $fields['comment'] );
+			$fields['comment'] = $comment_field_bak;
+			return $fields;
+		} );
+
 	}
 }
