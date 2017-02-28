@@ -8,7 +8,6 @@ use \TimberMenu as TimberMenu;
 use \Twig_Extension_StringLoader as Twig_Extension_StringLoader;
 
 use Salaros\Wordpress\Template\TwigExtensions;
-use Salaros\Wordpress\Template\AdvancedCustomFields;
 use Salaros\Wordpress\Template\Bootstrapify;
 
 class WordPressSite extends TimberSite {
@@ -114,9 +113,6 @@ class WordPressSite extends TimberSite {
 		// Comment form
 		add_action( 'init', array( $this, 'bootstrapify_init' ) );
 
-		// Register custom fields in order to manage advanced post/term etc meta from UI
-		add_action( 'init', array( $this, 'advanced_custom_fields_init' ) );
-
 		// Register actions for custom scripts, styles, menus etc
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_styles' ) );
@@ -205,10 +201,6 @@ class WordPressSite extends TimberSite {
 
 	public function bootstrapify_init() {
 		Bootstrapify::init();
-	}
-
-	public function advanced_custom_fields_init() {
-		AdvancedCustomFields::init();
 	}
 
 	public function add_script( $handle, $src = '', array $deps = [], $ver = false, $in_footer = false, array $data = [] ) {
