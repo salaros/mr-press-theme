@@ -1,10 +1,10 @@
 {% for item in menu.get_items %}
     {% if item.get_children %}
     <div class="ui compact item {{ item.classes | join(' ') }} {{ (item.current_item_ancestor) ? 'active' : '' }}" tabindex="0" role="button" aria-haspopup="true" aria-expanded="false">
-        <div class="ui simple dropdown">
+        <div class="ui dropdown">
             <a>
                 {{ item.title }}
-                <i class="ui simple dropdown icon"></i>
+                <i class="ui dropdown icon"></i>
             </a>
             <div class="menu" tabindex="-1">
                 {% for children in item.get_children %}
