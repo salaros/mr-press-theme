@@ -164,7 +164,7 @@ class WordPressSite extends TimberSite {
 
 		// Add UI toolkit-related locations
 		$this->twig_locations[] = sprintf( '%s/templates', $this->ui_toolkit );
-		$this->twig_locations[] = sprintf( '%s/view-blocks', $this->ui_toolkit );
+		$this->twig_locations[] = sprintf( '%s/blocks', $this->ui_toolkit );
 		$this->twig_locations[] = sprintf( '%s/comments', $this->ui_toolkit );
 		$this->twig_locations[] = sprintf( '%s/login', $this->ui_toolkit );
 
