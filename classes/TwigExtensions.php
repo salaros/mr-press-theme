@@ -14,7 +14,7 @@ class TwigExtensions extends \Twig_Extension {
 	}
 
 	public function getFunctions() {
-		return array( 
+		return array(
 			new \Twig_SimpleFunction( 'slugToPage', array( $this, 'get_page_by_slug' ) ),
 			new \Twig_SimpleFunction( 'slugToUrl', array( $this, 'get_page_url_by_slug' ) ),
 			new \Twig_SimpleFunction( 'slugToID', array( $this, 'get_page_id_by_slug' ) ),
@@ -41,8 +41,9 @@ class TwigExtensions extends \Twig_Extension {
 	*/
 	public static function get_translation( $label, $domain = null ) {
 
-		if ( empty( $domain ) )
+		if ( empty( $domain ) ) {
 			$domain = self::$default_text_domain;
+		}
 
 		$translation = __( $label, $domain );
 		return ($translation !== $label)
