@@ -543,18 +543,20 @@ class WordPressSite extends TimberSite {
 			return array_diff( $plugins, array( 'wpembed' ) );
 		} );
 
-		// Remove all embeds rewrite rules.
-		add_filter( 'rewrite_rules_array', function ( $rules ) {
-			foreach ( $rules as $rule => $rewrite ) {
-				if ( false !== strpos( $rewrite, 'embed=true' ) ) {
-					unset( $rules[ $rule ] );
-					break;
+		add_action('after_switch_theme', function () {
+			// Remove all embeds rewrite rules.
+			add_filter( 'rewrite_rules_array', function ( $rules ) {
+				foreach ( $rules as $rule => $rewrite ) {
+					if ( false !== strpos( $rewrite, 'embed=true' ) ) {
+						unset( $rules[ $rule ] );
+						break;
+					}
 				}
-			}
 
-			return $rules;
-		} );
-		flush_rewrite_rules();
+				return $rules;
+			} );
+			flush_rewrite_rules();
+		});
 
 		// Remove filter of the oEmbed result before any HTTP requests are made.
 		remove_filter( 'pre_oembed_result', 'wp_filter_pre_oembed_result', 10 );
