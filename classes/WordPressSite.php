@@ -402,11 +402,12 @@ class WordPressSite extends TimberSite {
 			if ( is_int( $menu_name ) && intval( $menu_name ) ) {
 				$menu_var_name = get_term( $menu_name )->slug;
 				$this->twig_context[ $menu_var_name ] = new \TimberMenu( $menu_name );
-			} else {
-				$menu_var_name = preg_replace( '/(\s|-)+/', '_', $menu_name );
-				$menu_obj = get_term_by( 'slug', $menu_name, 'nav_menu' );
-				$this->twig_context[ $menu_var_name ] = new \TimberMenu( $menu_obj->term_id );
+				continue;
 			}
+
+			$menu_var_name = preg_replace( '/(\s|-)+/', '_', $menu_name );
+			$menu_obj = get_term_by( 'slug', $menu_name, 'nav_menu' );
+			$this->twig_context[ $menu_var_name ] = new \TimberMenu( $menu_obj->term_id );
 		}
 
 		return array_merge( $this->twig_context, $context );
@@ -487,12 +488,15 @@ class WordPressSite extends TimberSite {
 		// set default text domain for Twig 'translate' filter
 		TwigExtensions::set_default_text_domain( $text_domain );
 
-		if ( is_child_theme() ) {
-			load_theme_textdomain( $text_domain, $this->theme->parent->langs );
-			load_child_theme_textdomain( $text_domain, $this->theme->langs );
-		} else {
+		if ( ! is_child_theme() ) {
 			load_theme_textdomain( $text_domain, $this->theme->langs );
+			return;
 		}
+
+		if ( isset( $this->theme->parent->langs ) ) {
+			load_theme_textdomain( $text_domain, $this->theme->parent->langs );
+		}
+		load_child_theme_textdomain( $text_domain, $this->theme->langs );
 	}
 
 	// Disable emoji functionality introduced in WordPress 4.2
