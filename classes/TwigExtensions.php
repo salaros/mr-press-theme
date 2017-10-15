@@ -23,6 +23,7 @@ class TwigExtensions extends \Twig_Extension {
 			new \Twig_SimpleFunction( 'url', array( $this, 'get_url' ) ),
 			new \Twig_SimpleFunction( 'thumbnail_url', array( $this, 'get_thumbnail_url' ) ),
 			new \Twig_SimpleFunction( 'pdf_to_image', array( $this, 'pdf_to_image_obj' ) ),
+			new \Twig_SimpleFunction( 'wp_title', array( $this, 'get_wp_title' ) ),
 		);
 	}
 
@@ -151,6 +152,13 @@ class TwigExtensions extends \Twig_Extension {
 		$image->setImageFormat( 'jpg' );
 		$image->writeImage( $image_path );
 		return new \TimberImage( $image_url );
+	}
+
+	function get_wp_title() {
+		$title = ( is_home() || is_front_page() )
+			? get_bloginfo( 'name' )
+			: sprintf( '%s - %s', get_the_title(), get_bloginfo( 'name' ) );
+		return apply_filters( 'wp_title', $title );
 	}
 }
 
