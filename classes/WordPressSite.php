@@ -111,6 +111,7 @@ class WordPressSite extends TimberSite {
 
 		// Twig stuff
 		add_filter( 'timber_context', array( $this, 'register_context' ) );
+		add_filter( 'timber_context', array( $this, 'add_menus_to_context' ) );
 		add_filter( 'get_twig', array( $this, 'add_to_twig' ) );
 
 		// Register custom post and taxonomies
@@ -202,18 +203,20 @@ class WordPressSite extends TimberSite {
 		return $context;
 	}
 
+	public function add_menus_to_context( array $context ) {
+		// Add all the menus to the context
+		foreach ( array_keys( $this->site_menus ) as $menu_name ) {
 			if ( is_int( $menu_name ) && intval( $menu_name ) ) {
 				$menu_var_name = get_term( $menu_name )->slug;
-				$this->twig_context[ $menu_var_name ] = new \TimberMenu( $menu_name );
+				$context[ $menu_var_name ] = new \TimberMenu( $menu_name );
 				continue;
 			}
-
 			$menu_var_name = preg_replace( '/(\s|-)+/', '_', $menu_name );
 			$menu_obj = get_term_by( 'slug', $menu_name, 'nav_menu' );
-			$this->twig_context[ $menu_var_name ] = new \TimberMenu( $menu_obj->term_id );
+			$context[ $menu_var_name ] = new \TimberMenu( $menu_obj->term_id );
 		}
 
-		return array_merge( $this->twig_context, $context );
+		return $context;
 	}
 
 	public function add_to_twig( $twig ) {
