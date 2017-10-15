@@ -121,15 +121,6 @@ class WordPressSite extends TimberSite {
 		// Translations
 		add_action( 'after_setup_theme', array( $this, 'load_text_domain' ) );
 
-		// Remove Emoji detection (for it's poor implementation)
-		add_action( 'init', array( $this, 'remove_emoji_detection' ) ); // TODO make it a theme option
-
-		// Disable Embeds in WordPress
-		add_action( 'init', array( $this, 'remove_embeds' ) ); // TODO make it a theme option
-
-		// Remove admin bar for non-admin users
-		add_action( 'init', array( $this, 'hide_admin_bar_for_users' ) ); // TODO make it a theme option
-
 		add_action( 'after_setup_theme', array( $this, 'register_menu_locations' ) );
 
 		// Add UI toolkit-related locations
