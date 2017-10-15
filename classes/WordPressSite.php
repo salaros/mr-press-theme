@@ -195,15 +195,12 @@ class WordPressSite extends TimberSite {
 	}
 
 	public function register_context( array $context ) {
-		global $wp;
-
-		$this->twig_context['redirect_url'] = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
-
 		// Add site object to the context
 		$context['site'] = $this;
 
-		// Add all the menus to the context
-		foreach ( $this->site_menus as $menu_name => $menu_items ) {
+		$context = array_merge( $this->twig_context, $context );
+		return $context;
+	}
 
 			if ( is_int( $menu_name ) && intval( $menu_name ) ) {
 				$menu_var_name = get_term( $menu_name )->slug;
